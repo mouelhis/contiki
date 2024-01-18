@@ -10,7 +10,7 @@
 *.pyc
 *.redbee-econotag
 *.econotag 
-*.native
+#*.native
 *.z1
 *.minimal-net
 *.sky
@@ -25,7 +25,7 @@
 *.c128
 *.c64
 *.cc2538dk
-*.zoul
+#*.zoul
 *.jn516x
 *.srf06-cc26xx
 *.ev-aducrf101mkxz
