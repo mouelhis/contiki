@@ -39,7 +39,7 @@ summary
 *~
 .DS_Store
 obj_*
-symbols.*
+#symbols.*
 Makefile.target
 doc/html
 doc/latex
