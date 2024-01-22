@@ -44,7 +44,7 @@
 #else /* default is Z1 */
 #define EXAMPLE_TX_POWER  31
 #endif
-#define EXAMPLE_CHANNEL   15
+#define EXAMPLE_CHANNEL   24
 #define EXAMPLE_PANID     0xBEEF
 
 /*---------------------------------------------------------------------------*/

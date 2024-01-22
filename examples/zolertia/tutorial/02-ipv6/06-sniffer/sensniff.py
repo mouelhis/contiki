@@ -42,7 +42,7 @@ import select
 import time
 import stat
 import errno
-import StringIO
+import io
 import logging
 import logging.handlers
 import struct
@@ -247,7 +247,7 @@ class SerialInputHandler(object):
         if cmd == CMD_CHANNEL:
             # We'll only ever see this if the user asked for it, so we are
             # running interactive. Print away
-            print 'Sniffing in channel: %d' % (b[0],)
+            print ('Sniffing in channel: %d' % (b[0],))
         else:
             logger.warn("Received a command response with unknown code")
         return ''
@@ -475,7 +475,7 @@ def arg_parser():
     return parser.parse_args()
 #####################################
 def dump_stats():
-    s = StringIO.StringIO()
+    s = io.StringIO()
 
     s.write('Frame Stats:\n')
     for k, v in stats.items():
@@ -519,7 +519,7 @@ if __name__ == '__main__':
         handlers.append(PcapDumpHandler(args.pcap))
 
     if args.non_interactive is False:
-        h = StringIO.StringIO()
+        h = io.StringIO()
         h.write('Commands:\n')
         h.write('c: Print current RF Channel\n')
         h.write('n: Trigger new pcap header before the next frame\n')
@@ -530,7 +530,7 @@ if __name__ == '__main__':
 
         e = 'Unknown Command. Type h or ? for help'
 
-        print h
+        print (h)
 
     while 1:
         if args.non_interactive is False:
@@ -539,7 +539,7 @@ if __name__ == '__main__':
                     cmd = sys.stdin.readline().rstrip()
                     logger.debug('User input: "%s"' % (cmd,))
                     if cmd in ('h', '?'):
-                        print h
+                        print (h)
                     elif cmd == 'c':
                         serial_handler.get_channel()
                     elif cmd == 'n':
@@ -557,7 +557,7 @@ if __name__ == '__main__':
             except select.error:
                 logger.warn('Error while trying to read stdin')
             except ValueError:
-                print e
+                print (e)
             except UnboundLocalError:
                 # Raised by command 'n' when -o was specified at command line
                 pass
