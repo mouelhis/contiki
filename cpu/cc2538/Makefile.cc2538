@@ -1,10 +1,10 @@
-CC      = arm-none-eabi-gcc
-CPP     = arm-none-eabi-cpp
-LD      = arm-none-eabi-gcc
-AR      = arm-none-eabi-ar
-OBJCOPY = arm-none-eabi-objcopy
-OBJDUMP = arm-none-eabi-objdump
-NM      = arm-none-eabi-nm
+CC      = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc
+CPP     = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-cpp
+LD      = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc
+AR      = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ar
+OBJCOPY = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-objcopy
+OBJDUMP = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-objdump
+NM      = /usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-nm
 
 ifndef SOURCE_LDSCRIPT
 SOURCE_LDSCRIPT = $(CONTIKI_CPU)/cc2538.lds

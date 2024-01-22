@@ -62,27 +62,25 @@ AUTOSTART_PROCESSES(&hello_world_process);
  */
 PROCESS_THREAD(hello_world_process, ev, data)
 {
-  /* Every process start with this macro, we tell the system this is the start
-   * of the thread
-   */
-  PROCESS_BEGIN();
-
+  static struct etimer timer;
   static uint16_t num = 0xABCD;
   static const char *hello = "Hello world, again!";
 
-  /* Now we are printing this message to the console over the USB port, use
-   * "make login" and hit the reset button to catch this message, as well as the
-   * booting information of the node
-   */
-  printf("Hello, world\n");
+  PROCESS_BEGIN();
 
-  /* We might as well also use */
-  printf("%s\n", hello);
+  /* Setup a periodic timer that expires after 10 seconds. */
+  etimer_set(&timer, CLOCK_SECOND * 10);
 
-  /* And mix numeric values with strings */
-  printf("This is a value in hex 0x%02X, the same as %u\n", num, num);
-  
-  /* This is the end of the process, we tell the system we are done */
+  while(1) {
+    printf("Hello, world\n");
+    printf("%s\n", hello);
+    printf("This is a value in hex 0x%02X, the same as %u\n", num, num);
+
+    
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
+    etimer_reset(&timer);
+  }
+
   PROCESS_END();
+  
 }
-/*---------------------------------------------------------------------------*/
