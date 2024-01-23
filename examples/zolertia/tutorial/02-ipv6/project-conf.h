@@ -62,7 +62,9 @@
 
 /* The following are Zoul (RE-Mote, etc) specific */
 #undef CC2538_RF_CONF_CHANNEL
-#define CC2538_RF_CONF_CHANNEL     26
+#define CC2538_RF_CONF_CHANNEL     15
+
+#define UIP_CONF_DS6_DEFAULT_PREFIX 0xaaaa
 
 
 /*---------------------------------------------------------------------------*/
