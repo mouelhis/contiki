@@ -47,14 +47,16 @@
 
 /* The following are Zoul (RE-Mote, etc) specific */
 #undef CC2538_RF_CONF_CHANNEL
-#define CC2538_RF_CONF_CHANNEL     26
+#define CC2538_RF_CONF_CHANNEL     15
 
 #define CC2538_RF_CONF_SNIFFER     1
 #define CC2538_RF_CONF_AUTOACK     0
 #define UART0_CONF_BAUD_RATE       460800
 
+//#undef NETSTACK_CONF_RDC
+//#define NETSTACK_CONF_RDC          stub_rdc_driver
 #undef NETSTACK_CONF_RDC
-#define NETSTACK_CONF_RDC          stub_rdc_driver
+#define NETSTACK_CONF_RDC      sensniff_rdc_driver
 
 #else /* Default is Z1 */
 

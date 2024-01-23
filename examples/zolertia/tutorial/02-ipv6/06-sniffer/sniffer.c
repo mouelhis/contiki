@@ -39,7 +39,7 @@ PROCESS_THREAD(sniffer_process, ev, data)
 
   PROCESS_BEGIN();
 
-  PRINTF("Sniffer started\n");
+  printf("Sniffer started\n");
 
   PROCESS_EXIT();
 

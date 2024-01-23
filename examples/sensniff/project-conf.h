@@ -32,8 +32,49 @@
 #ifndef PROJECT_CONF_H_
 #define PROJECT_CONF_H_
 /*---------------------------------------------------------------------------*/
+#undef IEEE802154_CONF_PANID
+#define IEEE802154_CONF_PANID      0xABCD
+
+#if CONTIKI_TARGET_ZOUL
+
+/* The following are Zoul (RE-Mote, etc) specific */
+#undef CC2538_RF_CONF_CHANNEL
+#define CC2538_RF_CONF_CHANNEL     15
+
+#define CC2538_RF_CONF_SNIFFER     1
+#define CC2538_RF_CONF_AUTOACK     0
+#define UART0_CONF_BAUD_RATE       460800
+
+//#undef NETSTACK_CONF_RDC
+//#define NETSTACK_CONF_RDC          stub_rdc_driver
 #undef NETSTACK_CONF_RDC
 #define NETSTACK_CONF_RDC      sensniff_rdc_driver
+
+#else /* Default is Z1 */
+
+/* The following are Z1 specific */
+#undef RF_CHANNEL
+#define RF_CHANNEL	           26
+
+#undef CC2420_CONF_CHANNEL
+#define CC2420_CONF_CHANNEL        26
+
+#undef CC2420_CONF_AUTOACK
+#define CC2420_CONF_AUTOACK        0
+#undef CC2420_CONF_HEXDUMP
+#define CC2420_CONF_HEXDUMP        1
+
+#undef ADC_SENSOR_CONF_ON
+#define ADC_SENSOR_CONF_ON         0
+#undef LPM_CONF_MODE
+#define LPM_CONF_MODE              0
+#undef UART0_CONF_HIGH_SPEED
+#define UART0_CONF_HIGH_SPEED      1
+
+#undef NETSTACK_CONF_RDC
+#define NETSTACK_CONF_RDC          nullrdc_driver
+
+#endif /* CONTIKI_TARGET_ZOUL */
 /*---------------------------------------------------------------------------*/
 /* Include platform-specific header */
 #include "target-conf.h"
